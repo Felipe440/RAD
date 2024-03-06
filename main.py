@@ -60,8 +60,22 @@ import os
 #     print("arquivo inexistente")
 #     print('descrição: ', erro)
 
+# try:
+#     f = open('novo2.txt','r')
+#     f.write('hello')
+# except IOError as erro:
+#     print('erro foi: ', erro)
+
+notas = [('carlos',2.0), ('lucas',10.0), ('maria',5.0)]
 try:
-    f = open('novo2.txt','r')
-    f.write('hello')
-except IOError as erro:
-    print('erro foi: ', erro)
+    with open('notas.txt', 'w') as n:
+        for nome,nota in notas:
+            n.write(f'nome{nome} nota:{nota}')
+except FileNotFoundError:
+    print('erro')
+
+
+with open('notas.txt','r') as f:
+    for linha in f:
+        print(f.seek(0))
+        print(f.read())
